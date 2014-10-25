@@ -27,5 +27,7 @@
     
     {{ HTML::script('assets/vendor.min.js') }}
     {{ HTML::script('assets/app.min.js') }}
+    
+    @yield('script')
 </body>
 </html>

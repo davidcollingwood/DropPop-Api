@@ -38,3 +38,28 @@
     </div>
     
 @stop
+
+@section('script')
+    
+    @if (!$location->id)
+        <script>
+            (function($) {
+                var success = function(position) {
+                    $('[name=lat]').val(position.coords.latitude);
+                    $('[name=lng]').val(position.coords.longitude);
+                };
+                
+                var error = function() {
+                    alert('Dang...some error occurred, maybe a timeout? If you want to try again just refresh the page.');
+                };
+                
+                var options = {
+                    enableHighAccuracy: true
+                };
+                
+                navigator.geolocation.getCurrentPosition(success, error, options)
+            })(jQuery);
+        </script>
+    @endif
+    
+@stop
