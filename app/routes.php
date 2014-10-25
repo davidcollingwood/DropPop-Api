@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Api Requests
+ * Api Routes
  */
-
 Route::group(array('prefix' => 'api'), function() {
     
     Route::get('articles', 'Api\ArticlesController@get');
@@ -12,13 +11,43 @@ Route::group(array('prefix' => 'api'), function() {
 
 
 /**
- * Article Views
+ * Article Routes
  */
 Route::get('articles', array('as' => 'articles.all', 'uses' => 'ArticlesController@getArticles'));
 Route::get('articles/new', array('as' => 'articles.new', 'uses' => 'ArticlesController@getNewArticle'));
 Route::post('articles/save', array('as' => 'articles.save', 'uses' => 'ArticlesController@saveArticle'));
 Route::get('articles/{id}', array('as' => 'articles.article', 'uses' => 'ArticlesController@getArticle'))->where('id', '[0-9]+');
 Route::post('articles/{id}', array('as' => 'articles.update', 'uses' => 'ArticlesController@postArticle'))->where('id', '[0-9]+');
+
+
+/**
+ * User Routes
+ */
+Route::get('users', array('as' => 'users.all', 'uses' => 'UsersController@getUsers'));
+Route::get('users/new', array('as' => 'users.new', 'uses' => 'UsersController@getNewUser'));
+Route::post('users/save', array('as' => 'users.save', 'uses' => 'UsersController@saveUser'));
+Route::get('users/{id}', array('as' => 'users.user', 'uses' => 'UsersController@getUser'))->where('id', '[0-9]+');
+Route::post('users/{id}', array('as' => 'users.update', 'uses' => 'UsersController@postUser'))->where('id', '[0-9]+');
+
+
+/**
+ * Location Routes
+ */
+Route::get('locations', array('as' => 'locations.all', 'uses' => 'LocationsController@getLocations'));
+Route::get('locations/new', array('as' => 'locations.new', 'uses' => 'LocationsController@getNewLocation'));
+Route::post('locations/save', array('as' => 'locations.save', 'uses' => 'LocationsController@saveLocation'));
+Route::get('locations/{id}', array('as' => 'locations.location', 'uses' => 'LocationsController@getLocation'))->where('id', '[0-9]+');
+Route::post('locations/{id}', array('as' => 'locations.update', 'uses' => 'LocationsController@postLocation'))->where('id', '[0-9]+');
+
+
+/**
+ * Bubble Routes
+ */
+Route::get('bubbles', array('as' => 'bubbles.all', 'uses' => 'BubblesController@getBubbles'));
+Route::get('bubbles/new', array('as' => 'bubbles.new', 'uses' => 'BubblesController@getNewBubble'));
+Route::post('bubbles/save', array('as' => 'bubbles.save', 'uses' => 'BubblesController@saveBubble'));
+Route::get('bubbles/{id}', array('as' => 'bubbles.bubble', 'uses' => 'BubblesController@getBubble'))->where('id', '[0-9]+');
+Route::post('bubbles/{id}', array('as' => 'bubbles.update', 'uses' => 'BubblesController@postBubble'))->where('id', '[0-9]+');
 
 
 

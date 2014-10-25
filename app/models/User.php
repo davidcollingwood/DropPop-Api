@@ -1,0 +1,15 @@
+<?php
+
+class User extends Eloquent {
+    
+    protected $fillable = array('first_name', 'last_name', 'gender', 'email', 'popped', 'dropped');
+    
+    public function bubbles() {
+        return $this->hasMany('Bubble');
+    }
+    
+    public function getFullNameAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+    
+}
