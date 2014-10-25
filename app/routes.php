@@ -5,7 +5,29 @@
  */
 Route::group(array('prefix' => 'api'), function() {
     
-    Route::get('articles', 'Api\ArticlesController@get');
+    /**
+     * Article Routes
+     */
+    Route::get('articles', 'Api\ArticlesController@getArticles');
+    Route::get('articles/{id}', 'Api\ArticlesController@getArticle')->where('id', '[0-9]+');
+    
+    /**
+     * User Routes
+     */
+    Route::get('users', 'Api\UsersController@getUsers');
+    Route::get('users/{id}', 'Api\UsersController@getUser')->where('id', '[0-9]+');
+    
+    /**
+     * Location Routes
+     */
+    Route::get('locations', 'Api\LocationsController@getLocations');
+    Route::get('locations/{id}', 'Api\LocationsController@getLocation')->where('id', '[0-9]+');
+    
+    /**
+     * Bubble Routes
+     */
+    Route::get('bubbles', 'Api\BubblesController@getBubbles');
+    Route::get('bubbles/{id}', 'Api\BubblesController@getBubble')->where('id', '[0-9]+');
     
 });
 
