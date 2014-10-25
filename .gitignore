@@ -1,5 +1,5 @@
 .DS_STORE
-vendor/
+# vendor/
 app/storage/
 app/config/local/
 # public/assets/
