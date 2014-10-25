@@ -1,5 +1,8 @@
 web1:
+    document_root: public/
     php_version: 5.4.14
+    php_extensions:
+        - mcrypt
 
 db1:
     type: mysql
