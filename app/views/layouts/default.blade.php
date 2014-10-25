@@ -13,6 +13,9 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ URL::route('articles.all') }}">Articles</a></li>
+                    <li><a href="{{ URL::route('users.all') }}">Users</a></li>
+                    <li><a href="{{ URL::route('locations.all') }}">Locations</a></li>
+                    <li><a href="{{ URL::route('bubbles.all') }}">Bubbles</a></li>
                 </ul>
             </div>
         </div>
