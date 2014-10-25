@@ -1,0 +1,7 @@
+.DS_STORE
+vendor/
+app/storage/
+app/config/local/
+public/assets/
+public/bower_components/
+public/node_modules/
