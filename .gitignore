@@ -2,6 +2,6 @@
 vendor/
 app/storage/
 app/config/local/
-public/assets/
+# public/assets/
 public/bower_components/
 public/node_modules/
