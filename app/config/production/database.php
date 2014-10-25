@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'tunnel.pagodabox.com:3306',
 			'database'  => 'droppop-api',
-			'username'  => 'root',
-			'password'  => '',
+			'username'  => 'chun',
+			'password'  => 'LRZQAlj7',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
