@@ -1,6 +1,6 @@
 .DS_STORE
 vendor/
-app/storage/
+app/storage/logs/
 app/config/local/
 public/assets/
 public/bower_components/
