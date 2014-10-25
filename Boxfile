@@ -1,0 +1,7 @@
+web1:
+    php_version: 5.4.14
+    before_deploy:
+        - "php artisan migrate"
+
+db1:
+    type: mysql
