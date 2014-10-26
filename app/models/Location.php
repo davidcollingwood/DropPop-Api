@@ -3,6 +3,7 @@
 class Location extends Eloquent {
     
     protected $fillable = array('lat', 'lng');
+    protected $appends = array('coords');
     
     public function bubbles() {
         return $this->hasMany('Bubble');
@@ -24,7 +25,7 @@ class Location extends Eloquent {
         $this->attributes['lng'] = (int) ($lng * 1000000);
     }
     
-    public function getCoordinatesAttribute() {
+    public function getCoordsAttribute() {
         return $this->lat . ' ' . $this->lng;
     }
     
