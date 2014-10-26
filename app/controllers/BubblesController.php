@@ -19,9 +19,9 @@ class BubblesController extends BaseController {
 	
 	public function getNewBubble() {
         $bubble = new $this->bubble;
-        $articles = $this->article->lists('title', 'id');
-        $users = $this->user->lists('first_name', 'id');
-        $locations = $this->location->lists('lat', 'id');
+        $articles = $this->article->all()->lists('title', 'id');
+        $users = $this->user->all()->lists('full_name', 'id');
+        $locations = $this->location->all()->lists('coords', 'id');
         
     	return View::make('bubbles.bubble')->with(array(
     	    'bubble' => $bubble,
@@ -45,9 +45,9 @@ class BubblesController extends BaseController {
 	
 	public function getBubble($id) {
     	$bubble = $this->bubble->findOrFail($id);
-        $articles = $this->article->lists('title', 'id');
-        $users = $this->user->lists('first_name', 'id');
-        $locations = $this->location->lists('lat', 'id');
+        $articles = $this->article->all()->lists('title', 'id');
+        $users = $this->user->all()->lists('full_name', 'id');
+        $locations = $this->location->all()->lists('coords', 'id');
     	
     	return View::make('bubbles.bubble')->with(array(
     	    'bubble' => $bubble,
