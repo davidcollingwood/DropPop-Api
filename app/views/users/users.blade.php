@@ -25,7 +25,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->full_name }}</td>
+                                <td>{{ $user->full_name }} {{ $user->me ? '(me)' : '' }}</td>
                                 <td>{{ $user->gender }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->popped }}</td>

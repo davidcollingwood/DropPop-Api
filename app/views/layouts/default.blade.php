@@ -12,10 +12,18 @@
         <div class="container">
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::route('articles.all') }}">Articles</a></li>
-                    <li><a href="{{ URL::route('users.all') }}">Users</a></li>
-                    <li><a href="{{ URL::route('locations.all') }}">Locations</a></li>
-                    <li><a href="{{ URL::route('bubbles.all') }}">Bubbles</a></li>
+                    <li><a href="{{ URL::route('articles.all') }}">
+                        <i class="glyphicon glyphicon-file"></i> Articles
+                    </a></li>
+                    <li><a href="{{ URL::route('users.all') }}">
+                        <i class="glyphicon glyphicon-user"></i> Users
+                    </a></li>
+                    <li><a href="{{ URL::route('locations.all') }}">
+                        <i class="glyphicon glyphicon-map-marker"></i> Locations
+                    </a></li>
+                    <li><a href="{{ URL::route('bubbles.all') }}">
+                        <i class="glyphicon glyphicon-adjust"></i> Bubbles
+                    </a></li>
                 </ul>
             </div>
         </div>
