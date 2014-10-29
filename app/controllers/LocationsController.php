@@ -47,5 +47,11 @@ class LocationsController extends BaseController {
     	
     	return Redirect::route('locations.all');
 	}
+	
+	public function deleteLocation($id) {
+    	$this->location->destroy($id);
+    	
+    	return Redirect::route('locations.all');
+	}
 
 }

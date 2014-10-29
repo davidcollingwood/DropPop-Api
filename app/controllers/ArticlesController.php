@@ -49,5 +49,11 @@ class ArticlesController extends BaseController {
     	
     	return Redirect::route('articles.all');
 	}
+	
+	public function deleteArticle($id) {
+    	$this->article->destroy($id);
+    	
+    	return Redirect::route('articles.all');
+	}
 
 }

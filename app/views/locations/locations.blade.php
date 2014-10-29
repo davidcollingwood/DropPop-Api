@@ -24,9 +24,14 @@
                                 <td>{{ $location->id }}</td>
                                 <td>{{ $location->lat }}</td>
                                 <td>{{ $location->lng }}</td>
-                                <td class="text-right"><a href="{{ URL::route('locations.location', array('id' => $location->id)) }}">
-                                    <i class="glyphicon glyphicon-edit"></i> Edit
-                                </a></td>
+                                <td class="text-right">
+                                    <a href="{{ URL::route('locations.location', array('id' => $location->id)) }}">
+                                        <i class="glyphicon glyphicon-edit"></i> Edit
+                                    </a>
+                                    <a href="{{ URL::route('locations.delete', array('id' => $location->id)) }}">
+                                        <i class="glyphicon glyphicon-remove"></i> Del
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

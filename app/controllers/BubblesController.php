@@ -68,5 +68,11 @@ class BubblesController extends BaseController {
     	
     	return Redirect::route('bubbles.all');
 	}
+	
+	public function deleteBubble($id) {
+    	$this->bubble->destroy($id);
+    	
+    	return Redirect::route('bubbles.all');
+	}
 
 }

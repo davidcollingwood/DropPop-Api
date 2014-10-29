@@ -94,6 +94,7 @@ Route::get('articles/new', array('as' => 'articles.new', 'uses' => 'ArticlesCont
 Route::post('articles/save', array('as' => 'articles.save', 'uses' => 'ArticlesController@saveArticle'));
 Route::get('articles/{id}', array('as' => 'articles.article', 'uses' => 'ArticlesController@getArticle'))->where('id', '[0-9]+');
 Route::post('articles/{id}', array('as' => 'articles.update', 'uses' => 'ArticlesController@postArticle'))->where('id', '[0-9]+');
+Route::get('articles/{id}/delete', array('as' => 'articles.delete', 'uses' => 'ArticlesController@deleteArticle'))->where('id', '[0-9]+');
 
 
 /**
@@ -107,6 +108,7 @@ Route::post('users/{id}', array('as' => 'users.update', 'uses' => 'UsersControll
 Route::post('users/{id}/friends', array('as' => 'users.update-friends', 'uses' => 'UsersController@postUserFriends'))->where('id', '[0-9]+');
 Route::post('users/{id}/favourite-articles', array('as' => 'users.update-favourite-articles', 'uses' => 'UsersController@postUserFavouriteArticles'))->where('id', '[0-9]+');
 Route::post('users/{id}/recent-articles', array('as' => 'users.update-recent-articles', 'uses' => 'UsersController@postUserRecentArticles'))->where('id', '[0-9]+');
+Route::get('users/{id}/delete', array('as' => 'users.delete', 'uses' => 'UsersController@deleteUser'))->where('id', '[0-9]+');
 
 
 /**
@@ -117,6 +119,7 @@ Route::get('locations/new', array('as' => 'locations.new', 'uses' => 'LocationsC
 Route::post('locations/save', array('as' => 'locations.save', 'uses' => 'LocationsController@saveLocation'));
 Route::get('locations/{id}', array('as' => 'locations.location', 'uses' => 'LocationsController@getLocation'))->where('id', '[0-9]+');
 Route::post('locations/{id}', array('as' => 'locations.update', 'uses' => 'LocationsController@postLocation'))->where('id', '[0-9]+');
+Route::get('locations/{id}/delete', array('as' => 'locations.delete', 'uses' => 'LocationsController@deleteLocation'))->where('id', '[0-9]+');
 
 
 /**
@@ -127,6 +130,7 @@ Route::get('bubbles/new', array('as' => 'bubbles.new', 'uses' => 'BubblesControl
 Route::post('bubbles/save', array('as' => 'bubbles.save', 'uses' => 'BubblesController@saveBubble'));
 Route::get('bubbles/{id}', array('as' => 'bubbles.bubble', 'uses' => 'BubblesController@getBubble'))->where('id', '[0-9]+');
 Route::post('bubbles/{id}', array('as' => 'bubbles.update', 'uses' => 'BubblesController@postBubble'))->where('id', '[0-9]+');
+Route::get('bubbles/{id}/delete', array('as' => 'bubbles.delete', 'uses' => 'BubblesController@deleteBubble'))->where('id', '[0-9]+');
 
 
 /**
