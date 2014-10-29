@@ -127,3 +127,9 @@ Route::get('bubbles/new', array('as' => 'bubbles.new', 'uses' => 'BubblesControl
 Route::post('bubbles/save', array('as' => 'bubbles.save', 'uses' => 'BubblesController@saveBubble'));
 Route::get('bubbles/{id}', array('as' => 'bubbles.bubble', 'uses' => 'BubblesController@getBubble'))->where('id', '[0-9]+');
 Route::post('bubbles/{id}', array('as' => 'bubbles.update', 'uses' => 'BubblesController@postBubble'))->where('id', '[0-9]+');
+
+
+/**
+ * Home Page -- just redirects to articles page
+ */
+Route::get('/', function() { return Redirect::route('articles.all'); });
