@@ -34,5 +34,17 @@ class UsersController extends BaseController {
             'user' => $user->toArray()
         ));
     }
+    
+    public function getMe() {
+        $me = $this->user->me()->load('friends');
+        
+        if (!$me) {
+            return JsonResponse::error(Lang::get('messages.user_not_found'));
+        }
+        
+        return JsonResponse::success(array(
+            'user' => $me->toArray()
+        ));
+    }
 
 }

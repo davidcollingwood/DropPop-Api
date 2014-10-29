@@ -1,8 +1,61 @@
 <?php
 
-/**
- * Api Routes
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the Closure to execute when that URI is requested.
+|
+*/
+
+/* allow desktop browsers cross domain access via CORS */
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT");
+header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, AuthToken");
+
+
+/*
+  Set CORS header options for all API requests
+
  */
+Route::filter('api-cors', function() 
+{
+  header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Methods: GET, POST, PUT");
+  header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, AuthToken");
+});
+
+
+/* divert any OPTIONS requests and process them here instead, setting CORS options.
+   Laravel doesnt give any easy way to handle OPTIONS requests */
+App::before(function($request)
+{
+    // Sent by the browser since request come in as cross-site AJAX
+    // The cross-site headers are sent via .htaccess
+    if ($request->getMethod() != "OPTIONS") 
+      return;
+
+  header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Methods: GET, POST, PUT");
+  header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, AuthToken');
+  die();
+
+});
+
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Api Routes
+|--------------------------------------------------------------------------
+*/
 Route::group(array('prefix' => 'api'), function() {
     
     /**
@@ -16,6 +69,7 @@ Route::group(array('prefix' => 'api'), function() {
      */
     Route::get('users', 'Api\UsersController@getUsers');
     Route::get('users/{id}', 'Api\UsersController@getUser')->where('id', '[0-9]+');
+    Route::get('users/me', 'Api\UsersController@getMe');
     
     /**
      * Location Routes
@@ -50,6 +104,9 @@ Route::get('users/new', array('as' => 'users.new', 'uses' => 'UsersController@ge
 Route::post('users/save', array('as' => 'users.save', 'uses' => 'UsersController@saveUser'));
 Route::get('users/{id}', array('as' => 'users.user', 'uses' => 'UsersController@getUser'))->where('id', '[0-9]+');
 Route::post('users/{id}', array('as' => 'users.update', 'uses' => 'UsersController@postUser'))->where('id', '[0-9]+');
+Route::post('users/{id}/friends', array('as' => 'users.update-friends', 'uses' => 'UsersController@postUserFriends'))->where('id', '[0-9]+');
+Route::post('users/{id}/favourite-articles', array('as' => 'users.update-favourite-articles', 'uses' => 'UsersController@postUserFavouriteArticles'))->where('id', '[0-9]+');
+Route::post('users/{id}/recent-articles', array('as' => 'users.update-recent-articles', 'uses' => 'UsersController@postUserRecentArticles'))->where('id', '[0-9]+');
 
 
 /**
@@ -70,62 +127,3 @@ Route::get('bubbles/new', array('as' => 'bubbles.new', 'uses' => 'BubblesControl
 Route::post('bubbles/save', array('as' => 'bubbles.save', 'uses' => 'BubblesController@saveBubble'));
 Route::get('bubbles/{id}', array('as' => 'bubbles.bubble', 'uses' => 'BubblesController@getBubble'))->where('id', '[0-9]+');
 Route::post('bubbles/{id}', array('as' => 'bubbles.update', 'uses' => 'BubblesController@postBubble'))->where('id', '[0-9]+');
-
-
-
-
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
-/* allow desktop browsers cross domain access via CORS */
-/*
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT");
-header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, AuthToken");
-*/
-
-
-/*
-  Set CORS header options for all API requests
-
- */
-/*
-Route::filter('api-cors', function() 
-{
-  header("Access-Control-Allow-Origin: *");
-  header("Access-Control-Allow-Methods: GET, POST, PUT");
-  header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, AuthToken");
-});
-*/
-
-
-/* divert any OPTIONS requests and process them here instead, setting CORS options.
-   Laravel doesnt give any easy way to handle OPTIONS requests */
-/*
-App::before(function($request)
-{
-    // Sent by the browser since request come in as cross-site AJAX
-    // The cross-site headers are sent via .htaccess
-    if ($request->getMethod() != "OPTIONS") 
-      return;
-
-  header("Access-Control-Allow-Origin: *");
-  header("Access-Control-Allow-Methods: GET, POST, PUT");
-  header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With, AuthToken');
-  die();
-
-});
-*/
