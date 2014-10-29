@@ -55,12 +55,22 @@ class UsersController extends BaseController {
 	}
 	
 	public function postUser($id) {
+    	if (Input::has('me')) {
+        	$current_me = $this->user->where('me', true)->first();
+        	
+        	if ($current_me) {
+            	$current_me->me = false;
+            	$current_me->save();
+        	}
+    	}
+    	
     	$user = $this->user->findOrFail($id);
     	
     	$user->first_name = Input::get('first_name');
     	$user->last_name = Input::get('last_name');
     	$user->gender = Input::get('gender');
     	$user->email = Input::get('email');
+    	$user->me = Input::has('me');
     	$user->save();
     	
     	$user->picture->thumbnail = Input::get('thumbnail');
