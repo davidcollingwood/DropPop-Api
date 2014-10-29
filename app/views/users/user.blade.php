@@ -49,6 +49,13 @@
                 </div>
                 
                 <div class="row">
+                    <div class="col-xs-12 form-group">
+                        <label for="me">Mark as Me</label><br />
+                        {{ Form::checkbox('me', null, array('class' => 'form-control')) }}
+                    </div>
+                </div>
+                
+                <div class="row">
                     <div class="col-xs-12">
                         {{ Form::button('Cancel', array('class' => 'btn btn-default pull-left', 'onclick' => 'window.history.back()')) }}
                         {{ Form::submit('Save', array('class' => 'btn btn-primary pull-right')) }}
