@@ -26,9 +26,14 @@
                                 <td>{{ $bubble->article->title }}</td>
                                 <td>{{ $bubble->user->full_name }}</td>
                                 <td>{{ $bubble->location->coords }}</td>
-                                <td class="text-right"><a href="{{ URL::route('bubbles.bubble', array('id' => $bubble->id)) }}">
-                                    <i class="glyphicon glyphicon-edit"></i> Edit
-                                </a></td>
+                                <td class="text-right">
+                                    <a href="{{ URL::route('bubbles.bubble', array('id' => $bubble->id)) }}">
+                                        <i class="glyphicon glyphicon-edit"></i> Edit
+                                    </a>
+                                    <a href="{{ URL::route('bubbles.delete', array('id' => $bubble->id)) }}">
+                                        <i class="glyphicon glyphicon-remove"></i> Del
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

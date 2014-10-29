@@ -30,9 +30,14 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->popped }}</td>
                                 <td>{{ $user->dropped }}</td>
-                                <td class="text-right"><a href="{{ URL::route('users.user', array('id' => $user->id)) }}">
-                                    <i class="glyphicon glyphicon-edit"></i> Edit
-                                </a></td>
+                                <td class="text-right">
+                                    <a href="{{ URL::route('users.user', array('id' => $user->id)) }}">
+                                        <i class="glyphicon glyphicon-edit"></i> Edit
+                                    </a>
+                                    <a href="{{ URL::route('users.delete', array('id' => $user->id)) }}">
+                                        <i class="glyphicon glyphicon-remove"></i> Del
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

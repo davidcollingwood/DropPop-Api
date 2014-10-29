@@ -26,9 +26,14 @@
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->author }}</td>
                                 <td>{{ $article->last_modified }}</td>
-                                <td class="text-right"><a href="{{ URL::route('articles.article', array('id' => $article->id)) }}">
-                                    <i class="glyphicon glyphicon-edit"></i> Edit
-                                </a></td>
+                                <td class="text-right">
+                                    <a href="{{ URL::route('articles.article', array('id' => $article->id)) }}">
+                                        <i class="glyphicon glyphicon-edit"></i> Edit
+                                    </a>
+                                    <a href="{{ URL::route('articles.delete', array('id' => $article->id)) }}">
+                                        <i class="glyphicon glyphicon-remove"></i> Del
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

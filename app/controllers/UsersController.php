@@ -106,5 +106,11 @@ class UsersController extends BaseController {
     	
     	return Redirect::route('users.all');
 	}
+	
+	public function deleteUser($id) {
+    	$this->user->destroy($id);
+    	
+    	return Redirect::route('users.all');
+	}
 
 }
